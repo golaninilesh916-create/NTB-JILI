@@ -1,126 +1,14 @@
-<!DOCTYPE html>
-<html lang="gu">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NTB JILI</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101010;
-      color: white;
-    }
-
-    header {
-      background: #1b1b1b;
-      padding: 22px 15px;
-      text-align: center;
-      border-bottom: 2px solid #d4af37;
-    }
-
-    h1 {
-      color: #ffd700;
-      margin: 0;
-    }
-
-    .container {
-      max-width: 430px;
-      margin: auto;
-      padding: 18px;
-    }
-
-    .card {
-      background: #202020;
-      border: 1px solid #5c4b18;
-      border-radius: 14px;
-      padding: 20px;
-      margin: 15px 0;
-    }
-
-    .balance {
-      color: #ffd700;
-      font-size: 32px;
-      font-weight: bold;
-    }
-
-    button {
-      width: 100%;
-      padding: 13px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 8px;
-      background: #d4af37;
-      color: #111;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>NTB JILI</h1>
-  <p>YOUR REWARDS WALLET</p>
-</header>
-
-<main class="container">
-
-  <section class="card">
-    <h2>💰 તમારું ડેમો વૉલેટ</h2>
-    <div class="balance" id="balance">₹0</div>
-    <p class="note">
-      આ ડેમો બેલેન્સ છે. વાસ્તવિક પૈસા નથી.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>🎁 લૉગિન રિવૉર્ડ</h2>
-    <p>પાંચ દિવસની લૉગિન શરતવાળો ડેમો રિવૉર્ડ.</p>
-    <button onclick="showMessage('લૉગિન રિવૉર્ડ માટે સુરક્ષિત એકાઉન્ટ સિસ્ટમ જરૂરી છે.')">
-      રિવૉર્ડની વિગતો
-    </button>
-  </section>
-
-  <section class="card">
-    <h2>👥 રેફરલ</h2>
-    <p>મિત્રોને આમંત્રિત કરો.</p>
-    <button onclick="showMessage('રેફરલ સિસ્ટમ હજી ડેમો વર્ઝનમાં છે.')">
-      રેફરલની વિગતો
-    </button>
-  </section>
-
-  <section class="card">
-    <h2>🏦 ડિપોઝિટ અને વિથડ્રૉલ</h2>
-    <p class="note">
-      આ પ્રારંભિક ડેમો છે. UPI પેમેન્ટ અથવા
-      વાસ્તવિક નાણાંની લેવડદેવડ જોડેલી નથી.
-    </p>
-    <button onclick="showMessage('ડેમો: પેમેન્ટ સિસ્ટમ હજી જોડવાની બાકી છે.')">
-      ડિપોઝિટ
-    </button>
-    <button onclick="showMessage('ડેમો: વિથડ્રૉલ સિસ્ટમ હજી જોડવાની બાકી છે.')">
-      વિથડ્રૉલ
-    </button>
-  </section>
-
-</main>
-
+<!doctype html>
+<html lang="gu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NTB JILI Demo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#17314d,#050b14 65%);color:#f5f8ff;font-family:Arial,sans-serif}header{padding:18px;border-bottom:1px solid #2b4058;display:flex;justify-content:space-between;align-items:center}.brand{font-size:25px;font-weight:900;color:#ffc928}.pill{border:1px solid #49627c;border-radius:20px;padding:5px 9px;font-size:12px}main{max-width:720px;margin:auto;padding:16px}.card{background:linear-gradient(145deg,#10233a,#091321);border:1px solid #2b4058;border-radius:16px;padding:18px;margin:14px 0}h2{margin:0 0 12px;font-size:20px}p{color:#b7c7d9;line-height:1.5}input{width:100%;padding:13px;margin:6px 0;border:1px solid #425a73;border-radius:10px;background:#06101c;color:white;font-size:16px}button{border:0;border-radius:10px;padding:13px 16px;font-weight:bold;font-size:15px;cursor:pointer;background:#ffc928;color:#111;margin:5px 0}.green{background:#11a968;color:white}.blue{background:#087fe7;color:white}.secondary{background:#142b43;color:white;border:1px solid #3a5878}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:110px}.amount{font-size:34px;font-weight:800;margin:8px 0}.small{font-size:12px;color:#9fb2c7}.notice{border:1px solid #705c22;background:#2b2513;color:#ffe8a0;border-radius:12px;padding:12px;font-size:13px;line-height:1.5}.hidden{display:none}.item{padding:12px 0;border-top:1px solid #263a50}footer{text-align:center;padding:20px;color:#8297ae;font-size:12px}
+</style></head><body><header><div><div class="brand">👑 NTB JILI</div><div class="small">WALLET & REWARDS DEMO</div></div><span class="pill">DEMO ONLY</span></header><main>
+<div class="notice"><b>ડેમો:</b> આ માત્ર પરીક્ષણ માટે છે. વાસ્તવિક UPI ચુકવણી, પૈસા ઉપાડવા, SMS OTP અથવા રોકડ બોનસ ટ્રાન્સફર થતું નથી. કોઈ પૈસા જમા કરશો નહીં.</div>
+<section class="card" id="loginCard"><h2>🔐 Login / Sign up</h2><p>કોઈપણ 10 અંકનો ડેમો મોબાઇલ નંબર દાખલ કરો. સાચું OTP મોકલાતું નથી.</p><input id="mobile" inputmode="numeric" maxlength="10" placeholder="10 અંકનો મોબાઇલ નંબર"><button onclick="login()">Continue (Demo)</button></section>
+<div id="app" class="hidden"><section class="card"><div class="row"><div><span class="pill">MY WALLET</span><div class="amount">₹0.00</div><div class="small">ડેમો બેલેન્સ — વાસ્તવિક પૈસા નથી</div></div><div><button class="green" onclick="deposit()">＋ Deposit request</button><button class="blue" onclick="withdraw()">↗ Withdraw request</button></div></div></section>
+<section class="card"><h2>🎁 5-Day Login Reward</h2><p>પાંચ દિવસની ડેમો પ્રગતિ; વાસ્તવિક રોકડ ઇનામ નથી.</p><div id="days" class="row"></div><button onclick="daily()">Today's demo check-in</button><div id="dailyStatus" class="small"></div></section>
+<section class="card"><h2>🤝 Referral</h2><p>તમારો ડેમો રેફરલ કોડ</p><input id="refCode" readonly><button class="secondary" onclick="copyRef()">Copy referral code</button><div class="small">વાસ્તવિક રેફરલ બોનસ/ચુકવણી નથી.</div></section>
+<section class="card"><h2>📜 Activity History</h2><div id="history">હજુ કોઈ ડેમો પ્રવૃત્તિ નથી.</div></section><button class="secondary" onclick="logout()">Log out</button></div></main><footer>© NTB JILI — Demo prototype. No real-money services.</footer>
 <script>
-  function showMessage(message) {
-    alert(message);
-  }
-</script>
-
-</body>
-</html>
+let checkins=0,history=[];function login(){let m=document.getElementById('mobile').value.trim();if(!/^\d{10}$/.test(m)){alert('10 અંકનો ડેમો મોબાઇલ નંબર દાખલ કરો.');return}document.getElementById('loginCard').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('refCode').value='NTB'+m.slice(-4);renderDays();addHistory('Demo login સફળ')}function logout(){document.getElementById('app').classList.add('hidden');document.getElementById('loginCard').classList.remove('hidden')}function addHistory(s){history.unshift(s);document.getElementById('history').innerHTML=history.map(x=>'<div class="item">'+x+'</div>').join('')}function deposit(){alert('Demo only: UPI ચુકવણી જોડાયેલી નથી. પૈસા મોકલશો નહીં.');addHistory('Deposit બટન પરીક્ષણ — ચુકવણી થઈ નથી')}function withdraw(){alert('Demo only: વાસ્તવિક withdrawal ઉપલબ્ધ નથી.');addHistory('Withdraw બટન પરીક્ષણ — પૈસા ટ્રાન્સફર થયા નથી')}function renderDays(){document.getElementById('days').innerHTML=Array.from({length:5},(_,i)=>'<div class="card" style="padding:10px;text-align:center;margin:4px;min-width:48px;flex:1"><b>Day '+(i+1)+'</b><div style="font-size:22px">'+(i<checkins?'✅':'🔒')+'</div></div>').join('')}function daily(){if(checkins>=5){document.getElementById('dailyStatus').textContent='પાંચ દિવસની ડેમો પ્રગતિ પૂરી થઈ ગઈ.';return}checkins++;renderDays();document.getElementById('dailyStatus').textContent='ડેમો check-in '+checkins+'/5 પૂર્ણ. કોઈ રોકડ બોનસ જમા થયો નથી.';addHistory('Demo daily check-in '+checkins+'/5')}function copyRef(){let v=document.getElementById('refCode');v.select();v.setSelectionRange(0,99999);alert('Referral code: '+v.value)}
+</script></body></html>
