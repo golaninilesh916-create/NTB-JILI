@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NTB JILI - Subscription</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #10121c;
+  color: white;
+}
+header {
+  background: #191c2b;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #f3bd45;
+}
+header h1 {
+  margin: 0;
+  color: #f3bd45;
+}
+header p {
+  color: #ddd;
+}
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 20px;
+}
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+.card {
+  background: #1c2030;
+  border: 1px solid #383e52;
+  border-radius: 16px;
+  padding: 24px 18px;
+  text-align: center;
+}
+.card.featured {
+  border: 2px solid #f3bd45;
+}
+.card h2 {
+  color: #f3bd45;
+}
+.price {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 18px 0;
+}
+.duration {
+  color: #bbb;
+}
+ul {
+  text-align: left;
+  line-height: 2;
+  padding-left: 22px;
+}
+button {
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #f3bd45;
+  color: #171717;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  background: #ffd66e;
+}
+.note {
+  margin-top: 24px;
+  padding: 15px;
+  background: #24283a;
+  border-radius: 10px;
+  color: #ddd;
+  line-height: 1.6;
+  font-size: 14px;
+}
+.back {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  color: #f3bd45;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎮 NTB JILI</h1>
+  <p>તમારો સબ્સ્ક્રિપ્શન પ્લાન પસંદ કરો</p>
+</header>
+<main class="container">
+  <div class="plans">
+    <section class="card">
+      <h2>🥉 Basic</h2>
+      <div class="price">₹99</div>
+      <div class="duration">1 મહિનો</div>
+      <ul>
+        <li>મૂળભૂત ગેમ્સનો ઍક્સેસ</li>
+        <li>યુઝર પ્રોફાઇલ</li>
+        <li>ગેમ હિસ્ટ્રી</li>
+      </ul>
+      <button onclick="selectPlan('Basic', 99, '1 મહિનો')">
+        પ્લાન પસંદ કરો
+      </button>
+    </section>
+    <section class="card featured">
+      <h2>🥈 Standard</h2>
+      <div class="price">₹499</div>
+      <div class="duration">3 મહિના</div>
+      <ul>
+        <li>વધુ ગેમ્સનો ઍક્સેસ</li>
+        <li>યુઝર પ્રોફાઇલ</li>
+        <li>ગેમ હિસ્ટ્રી</li>
+      </ul>
+      <button onclick="selectPlan('Standard', 499, '3 મહિના')">
+        પ્લાન પસંદ કરો
+      </button>
+    </section>
+    <section class="card">
+      <h2>🥇 Premium</h2>
+      <div class="price">₹999</div>
+      <div class="duration">12 મહિના</div>
+      <ul>
+        <li>તમામ ઉપલબ્ધ ગેમ્સનો ઍક્સેસ</li>
+        <li>યુઝર પ્રોફાઇલ</li>
+        <li>ગેમ હિસ્ટ્રી</li>
+      </ul>
+      <button onclick="selectPlan('Premium', 999, '12 મહિના')">
+        પ્લાન પસંદ કરો
+      </button>
+    </section>
+  </div>
+  <div class="note">
+    <strong>મહત્વપૂર્ણ:</strong> આ પેજ હાલમાં માત્ર ડેમો છે.
+    કોઈ વાસ્તવિક પેમેન્ટ લેવામાં આવતું નથી.
+    સબ્સ્ક્રિપ્શન વેચતાં પહેલાં લાગુ કાયદા અને પેમેન્ટ
+    પ્રોવાઇડરની મંજૂરી ચકાસો.
+  </div>
+  <a class="back" href="index.html">← હોમ પેજ પર પાછા જાઓ</a>
+</main>
+<script>
+function selectPlan(name, price, duration) {
+  alert(
+    "તમે " + name + " પ્લાન પસંદ કર્યો છે.\n" +
+    "કિંમત: ₹" + price + "\n" +
+    "સમયગાળો: " + duration + "\n\n" +
+    "આ ડેમો છે. વાસ્તવિક પેમેન્ટ હજી જોડાયેલું નથી."
+  );
+}
+</script>
+</body>
+</html>
