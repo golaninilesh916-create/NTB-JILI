@@ -1,14 +1,498 @@
-<!doctype html>
-<html lang="gu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NTB JILI Demo</title>
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NTB JILI Gaming</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#17314d,#050b14 65%);color:#f5f8ff;font-family:Arial,sans-serif}header{padding:18px;border-bottom:1px solid #2b4058;display:flex;justify-content:space-between;align-items:center}.brand{font-size:25px;font-weight:900;color:#ffc928}.pill{border:1px solid #49627c;border-radius:20px;padding:5px 9px;font-size:12px}main{max-width:720px;margin:auto;padding:16px}.card{background:linear-gradient(145deg,#10233a,#091321);border:1px solid #2b4058;border-radius:16px;padding:18px;margin:14px 0}h2{margin:0 0 12px;font-size:20px}p{color:#b7c7d9;line-height:1.5}input{width:100%;padding:13px;margin:6px 0;border:1px solid #425a73;border-radius:10px;background:#06101c;color:white;font-size:16px}button{border:0;border-radius:10px;padding:13px 16px;font-weight:bold;font-size:15px;cursor:pointer;background:#ffc928;color:#111;margin:5px 0}.green{background:#11a968;color:white}.blue{background:#087fe7;color:white}.secondary{background:#142b43;color:white;border:1px solid #3a5878}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:110px}.amount{font-size:34px;font-weight:800;margin:8px 0}.small{font-size:12px;color:#9fb2c7}.notice{border:1px solid #705c22;background:#2b2513;color:#ffe8a0;border-radius:12px;padding:12px;font-size:13px;line-height:1.5}.hidden{display:none}.item{padding:12px 0;border-top:1px solid #263a50}footer{text-align:center;padding:20px;color:#8297ae;font-size:12px}
-</style></head><body><header><div><div class="brand">👑 NTB JILI</div><div class="small">WALLET & REWARDS DEMO</div></div><span class="pill">DEMO ONLY</span></header><main>
-<div class="notice"><b>ડેમો:</b> આ માત્ર પરીક્ષણ માટે છે. વાસ્તવિક UPI ચુકવણી, પૈસા ઉપાડવા, SMS OTP અથવા રોકડ બોનસ ટ્રાન્સફર થતું નથી. કોઈ પૈસા જમા કરશો નહીં.</div>
-<section class="card" id="loginCard"><h2>🔐 Login / Sign up</h2><p>કોઈપણ 10 અંકનો ડેમો મોબાઇલ નંબર દાખલ કરો. સાચું OTP મોકલાતું નથી.</p><input id="mobile" inputmode="numeric" maxlength="10" placeholder="10 અંકનો મોબાઇલ નંબર"><button onclick="login()">Continue (Demo)</button></section>
-<div id="app" class="hidden"><section class="card"><div class="row"><div><span class="pill">MY WALLET</span><div class="amount">₹0.00</div><div class="small">ડેમો બેલેન્સ — વાસ્તવિક પૈસા નથી</div></div><div><button class="green" onclick="deposit()">＋ Deposit request</button><button class="blue" onclick="withdraw()">↗ Withdraw request</button></div></div></section>
-<section class="card"><h2>🎁 5-Day Login Reward</h2><p>પાંચ દિવસની ડેમો પ્રગતિ; વાસ્તવિક રોકડ ઇનામ નથી.</p><div id="days" class="row"></div><button onclick="daily()">Today's demo check-in</button><div id="dailyStatus" class="small"></div></section>
-<section class="card"><h2>🤝 Referral</h2><p>તમારો ડેમો રેફરલ કોડ</p><input id="refCode" readonly><button class="secondary" onclick="copyRef()">Copy referral code</button><div class="small">વાસ્તવિક રેફરલ બોનસ/ચુકવણી નથી.</div></section>
-<section class="card"><h2>📜 Activity History</h2><div id="history">હજુ કોઈ ડેમો પ્રવૃત્તિ નથી.</div></section><button class="secondary" onclick="logout()">Log out</button></div></main><footer>© NTB JILI — Demo prototype. No real-money services.</footer>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#07111f;
+ color:#fff;
+ font-family:Arial,sans-serif
+}
+header{
+ padding:18px;
+ background:#101f33;
+ border-bottom:2px solid #ffc928;
+ display:flex;
+ justify-content:space-between;
+ align-items:center
+}
+.brand{font-size:24px;font-weight:bold;color:#ffc928}
+main{max-width:700px;margin:auto;padding:15px}
+.card{
+ background:#102139;
+ border:1px solid #2c4565;
+ border-radius:15px;
+ padding:17px;
+ margin:14px 0
+}
+h2{font-size:20px;margin-top:0}
+p{color:#bac9db;line-height:1.5}
+input{
+ width:100%;padding:13px;margin:7px 0;
+ border-radius:9px;border:1px solid #425a73;
+ background:#07111f;color:white;font-size:16px
+}
+button{
+ padding:12px;border:0;border-radius:9px;
+ background:#ffc928;color:#111;
+ font-size:15px;font-weight:bold;cursor:pointer;
+ margin:5px 0
+}
+.full{width:100%}
+.blue{background:#087fe7;color:white}
+.green{background:#11a968;color:white}
+.dark{background:#203750;color:white}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row>*{flex:1;min-width:100px}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:10px
+}
+.game{
+ background:#172f4b;border:1px solid #355271;
+ border-radius:12px;padding:15px;text-align:center
+}
+.icon{font-size:35px;display:block;margin-bottom:8px}
+.amount{font-size:32px;font-weight:bold;color:#ffc928}
+.small{font-size:12px;color:#a9bed3}
+.notice{
+ padding:12px;background:#2c2717;
+ border:1px solid #746027;border-radius:10px;
+ color:#ffe9a6;font-size:13px;line-height:1.5
+}
+.hidden{display:none!important}
+.history-item{padding:10px 0;border-bottom:1px solid #30435a}
+footer{text-align:center;padding:20px;color:#9aadc2}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div>
+  <div class="brand">👑 NTB JILI</div>
+  <div class="small">ONLINE GAMING DEMO</div>
+ </div>
+ <span class="small">DEMO ONLY</span>
+</header>
+
+<main>
+
+<div class="notice">
+આ પરીક્ષણ માટેની ગેમિંગ એપ છે. અહીં વાસ્તવિક પૈસાની ચુકવણી થતી નથી.
+</div>
+
+<!-- LOGIN PAGE -->
+<section id="loginPage" class="card">
+ <h2>🔐 Login to NTB JILI</h2>
+
+ <div class="row">
+  <button id="userTab" onclick="setMode('user')">Username Login</button>
+  <button id="mobileTab" class="dark" onclick="setMode('mobile')">Mobile Login</button>
+ </div>
+
+ <form id="loginForm">
+  <div id="usernameField">
+   <input id="username" placeholder="Username" autocomplete="username">
+  </div>
+
+  <div id="mobileField" class="hidden">
+   <input id="mobile" placeholder="10 digit mobile number"
+    inputmode="numeric" maxlength="10">
+  </div>
+
+  <input id="password" type="password" placeholder="Password"
+   autocomplete="current-password">
+
+  <button class="full" type="submit">Login</button>
+ </form>
+
+ <button class="full blue" onclick="showRegister()">Create New Account</button>
+
+ <p class="small">ડેમો એકાઉન્ટ આ બ્રાઉઝરમાં જ સંગ્રહિત થશે. આ વાસ્તવિક સુરક્ષિત Login નથી.</p>
+</section>
+
+<!-- REGISTER PAGE -->
+<section id="registerPage" class="card hidden">
+ <h2>📝 Create Account</h2>
+
+ <form id="registerForm">
+  <input id="regUsername" placeholder="Create username" required minlength="3">
+  <input id="regMobile" placeholder="Mobile number (10 digits)"
+   inputmode="numeric" maxlength="10" required>
+  <input id="regPassword" type="password" placeholder="Create password"
+   required minlength="4">
+
+  <button class="full" type="submit">Register</button>
+ </form>
+
+ <button class="full dark" onclick="showLogin()">Back to Login</button>
+</section>
+
+<!-- MAIN APP -->
+<div id="appPage" class="hidden">
+
+ <section class="card">
+  <div class="row">
+   <div>
+    <div class="small">WELCOME</div>
+    <h2 id="welcomeName">Player</h2>
+   </div>
+   <button class="dark" onclick="logout()">Logout</button>
+  </div>
+ </section>
+
+ <section class="card">
+  <div class="small">DEMO WALLET BALANCE</div>
+  <div class="amount" id="balance">₹0.00</div>
+  <p class="small">વાસ્તવિક પૈસા નથી.</p>
+
+  <div class="row">
+   <button class="green" onclick="deposit()">＋ Deposit Demo</button>
+   <button class="blue" onclick="withdraw()">↗ Withdraw Request</button>
+  </div>
+ </section>
+
+ <!-- GAME LOBBY -->
+ <section class="card">
+  <h2>🎮 Game Lobby</h2>
+  <p>તમારી પસંદગીની ડેમો ગેમ પસંદ કરો.</p>
+
+  <div class="grid">
+   <div class="game">
+    <span class="icon">🎰</span>
+    <b>Slots</b>
+    <button class="full" onclick="openGame('Slots')">Play Demo</button>
+   </div>
+
+   <div class="game">
+    <span class="icon">🃏</span>
+    <b>Rummy</b>
+    <button class="full" onclick="openGame('Rummy')">Play Demo</button>
+   </div>
+
+   <div class="game">
+    <span class="icon">♠️</span>
+    <b>Teen Patti</b>
+    <button class="full" onclick="openGame('Teen Patti')">Play Demo</button>
+   </div>
+
+   <div class="game">
+    <span class="icon">🐟</span>
+    <b>Fishing</b>
+    <button class="full" onclick="openGame('Fishing')">Play Demo</button>
+   </div>
+
+   <div class="game">
+    <span class="icon">🕹️</span>
+    <b>Arcade</b>
+    <button class="full" onclick="openGame('Arcade')">Play Demo</button>
+   </div>
+
+   <div class="game">
+    <span class="icon">🎡</span>
+    <b>Lucky Spin</b>
+    <button class="full" onclick="openGame('Lucky Spin')">Play Demo</button>
+   </div>
+  </div>
+
+  <div id="gameMessage" class="notice" style="margin-top:12px">
+   ગેમ પસંદ કરો.
+  </div>
+ </section>
+
+ <!-- DAILY REWARD -->
+ <section class="card">
+  <h2>🎁 Daily Login Reward</h2>
+  <p>દરરોજ એક ડેમો ચેક-ઇન કરી શકો છો. આ રોકડ ઇનામ નથી.</p>
+  <button class="full" onclick="dailyCheckin()">Claim Demo Reward</button>
+  <div id="dailyStatus" class="small"></div>
+ </section>
+
+ <!-- REFERRAL -->
+ <section class="card">
+  <h2>🤝 Referral</h2>
+  <p>તમારો ડેમો Referral Code</p>
+  <input id="refCode" readonly>
+  <button class="full blue" onclick="copyReferral()">Copy Referral Code</button>
+ </section>
+
+ <!-- ACTIVITY HISTORY -->
+ <section class="card">
+  <h2>📜 Activity History</h2>
+  <div id="history" class="small">કોઈ પ્રવૃત્તિ નથી.</div>
+ </section>
+
+ <section class="card">
+  <h2>ℹ️ Account</h2>
+  <p id="accountInfo"></p>
+  <button class="full dark" onclick="logout()">Log Out</button>
+ </section>
+
+</div>
+</main>
+
+<footer>NTB JILI · Demo Prototype · No Real Money</footer>
+
 <script>
-let checkins=0,history=[];function login(){let m=document.getElementById('mobile').value.trim();if(!/^\d{10}$/.test(m)){alert('10 અંકનો ડેમો મોબાઇલ નંબર દાખલ કરો.');return}document.getElementById('loginCard').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('refCode').value='NTB'+m.slice(-4);renderDays();addHistory('Demo login સફળ')}function logout(){document.getElementById('app').classList.add('hidden');document.getElementById('loginCard').classList.remove('hidden')}function addHistory(s){history.unshift(s);document.getElementById('history').innerHTML=history.map(x=>'<div class="item">'+x+'</div>').join('')}function deposit(){alert('Demo only: UPI ચુકવણી જોડાયેલી નથી. પૈસા મોકલશો નહીં.');addHistory('Deposit બટન પરીક્ષણ — ચુકવણી થઈ નથી')}function withdraw(){alert('Demo only: વાસ્તવિક withdrawal ઉપલબ્ધ નથી.');addHistory('Withdraw બટન પરીક્ષણ — પૈસા ટ્રાન્સફર થયા નથી')}function renderDays(){document.getElementById('days').innerHTML=Array.from({length:5},(_,i)=>'<div class="card" style="padding:10px;text-align:center;margin:4px;min-width:48px;flex:1"><b>Day '+(i+1)+'</b><div style="font-size:22px">'+(i<checkins?'✅':'🔒')+'</div></div>').join('')}function daily(){if(checkins>=5){document.getElementById('dailyStatus').textContent='પાંચ દિવસની ડેમો પ્રગતિ પૂરી થઈ ગઈ.';return}checkins++;renderDays();document.getElementById('dailyStatus').textContent='ડેમો check-in '+checkins+'/5 પૂર્ણ. કોઈ રોકડ બોનસ જમા થયો નથી.';addHistory('Demo daily check-in '+checkins+'/5')}function copyRef(){let v=document.getElementById('refCode');v.select();v.setSelectionRange(0,99999);alert('Referral code: '+v.value)}
-</script></body></html>
+const STORAGE_KEY = "ntb_jili_demo_v1";
+let mode = "user";
+let currentUser = null;
+
+function getData(){
+ try {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+   users:{},session:null
+  };
+ } catch(e) {
+  return {users:{},session:null};
+ }
+}
+
+function saveData(data){
+ localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+}
+
+function setMode(value){
+ mode = value;
+ document.getElementById("usernameField")
+  .classList.toggle("hidden",value !== "user");
+ document.getElementById("mobileField")
+  .classList.toggle("hidden",value !== "mobile");
+
+ document.getElementById("userTab")
+  .className = value === "user" ? "" : "dark";
+ document.getElementById("mobileTab")
+  .className = value === "mobile" ? "" : "dark";
+}
+
+function showRegister(){
+ document.getElementById("loginPage").classList.add("hidden");
+ document.getElementById("registerPage").classList.remove("hidden");
+}
+
+function showLogin(){
+ document.getElementById("registerPage").classList.add("hidden");
+ document.getElementById("loginPage").classList.remove("hidden");
+}
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+ e.preventDefault();
+
+ const username = document.getElementById("regUsername").value.trim();
+ const mobile = document.getElementById("regMobile").value.trim();
+ const password = document.getElementById("regPassword").value;
+
+ if(!/^[a-zA-Z0-9_]{3,20}$/.test(username)){
+  alert("Usernameમાં 3-20 અક્ષર, નંબર અથવા underscore વાપરો.");
+  return;
+ }
+
+ if(!/^[0-9]{10}$/.test(mobile)){
+  alert("10 અંકનો ડેમો મોબાઇલ નંબર દાખલ કરો.");
+  return;
+ }
+
+ if(password.length < 4){
+  alert("Password ઓછામાં ઓછા 4 અક્ષરનો હોવો જોઈએ.");
+  return;
+ }
+
+ const data = getData();
+ const key = username.toLowerCase();
+
+ if(data.users[key]){
+  alert("આ Username પહેલેથી નોંધાયેલું છે.");
+  return;
+ }
+
+ if(Object.values(data.users).some(u => u.mobile === mobile)){
+  alert("આ મોબાઇલ નંબર પહેલેથી નોંધાયેલો છે.");
+  return;
+ }
+
+ data.users[key] = {
+  username:username,
+  mobile:mobile,
+  password:password,
+  balance:0,
+  checkinDate:"",
+  history:["ડેમો એકાઉન્ટ બનાવ્યું"],
+  referral:"NTB" + mobile.slice(-4)
+ };
+
+ saveData(data);
+ alert("ડેમો એકાઉન્ટ બની ગયું! હવે Login કરો.");
+ document.getElementById("registerForm").reset();
+ showLogin();
+});
+
+document.getElementById("loginForm").addEventListener("submit",function(e){
+ e.preventDefault();
+
+ const data = getData();
+ const password = document.getElementById("password").value;
+ let user = null;
+
+ if(mode === "user"){
+  const name = document.getElementById("username").value.trim().toLowerCase();
+  user = data.users[name];
+ } else {
+  const mobile = document.getElementById("mobile").value.trim();
+  if(!/^[0-9]{10}$/.test(mobile)){
+   alert("10 અંકનો મોબાઇલ નંબર દાખલ કરો.");
+   return;
+  }
+  user = Object.values(data.users).find(u => u.mobile === mobile);
+ }
+
+ if(!user || user.password !== password){
+  alert("Login વિગતો ખોટી છે. પહેલાં Demo Account બનાવો.");
+  return;
+ }
+
+ currentUser = user.username.toLowerCase();
+ data.session = currentUser;
+ saveData(data);
+ renderApp();
+});
+
+function getCurrent(){
+ if(!currentUser) return null;
+ return getData().users[currentUser] || null;
+}
+
+function updateUser(fn){
+ const data = getData();
+ if(!currentUser || !data.users[currentUser]) return;
+ fn(data.users[currentUser]);
+ saveData(data);
+ renderApp();
+}
+
+function addHistory(message){
+ updateUser(user => {
+  user.history = user.history || [];
+  user.history.unshift(new Date().toLocaleString() + " — " + message);
+  user.history = user.history.slice(0,50);
+ });
+}
+
+function renderApp(){
+ const user = getCurrent();
+ if(!user){
+  currentUser = null;
+  showLogin();
+  return;
+ }
+
+ document.getElementById("loginPage").classList.add("hidden");
+ document.getElementById("registerPage").classList.add("hidden");
+ document.getElementById("appPage").classList.remove("hidden");
+
+ document.getElementById("welcomeName").textContent = user.username;
+ document.getElementById("balance").textContent =
+  "₹" + Number(user.balance || 0).toFixed(2);
+ document.getElementById("refCode").value = user.referral;
+ document.getElementById("accountInfo").textContent =
+  "Username: " + user.username + " · Demo account";
+
+ const history = user.history || [];
+ document.getElementById("history").innerHTML = history.length
+  ? history.map(item => {
+     const div = document.createElement("div");
+     div.className = "history-item";
+     div.textContent = item;
+     return div.outerHTML;
+    }).join("")
+  : "કોઈ પ્રવૃત્તિ નથી.";
+
+ const today = new Date().toISOString().slice(0,10);
+ document.getElementById("dailyStatus").textContent =
+  user.checkinDate === today
+   ? "આજનો ડેમો ચેક-ઇન પૂર્ણ થયો છે."
+   : "આજનો ડેમો ચેક-ઇન બાકી છે.";
+}
+
+function deposit(){
+ const amount = prompt("Demo Deposit રકમ દાખલ કરો (ઉદાહરણ: 500):","500");
+ if(amount === null) return;
+
+ const value = Number(amount);
+ if(!Number.isFinite(value) || value <= 0 || value > 10000){
+  alert("₹1 થી ₹10,000 વચ્ચેની Demo રકમ દાખલ કરો.");
+  return;
+ }
+
+ updateUser(user => {
+  user.balance = Number(user.balance || 0) + value;
+  user.history.unshift("Demo Deposit: ₹" + value.toFixed(2) + " (વાસ્તવિક ચુકવણી નથી)");
+ });
+}
+
+function withdraw(){
+ alert("આ Demo Request છે. વાસ્તવિક પૈસા ઉપાડાતા નથી.");
+ addHistory("Demo Withdraw Request — કોઈ ચુકવણી થઈ નથી");
+}
+
+function openGame(name){
+ document.getElementById("gameMessage").textContent =
+  name + " Demo પસંદ કરી છે. આ ગેમનું સંપૂર્ણ વર્ઝન હજી ઉપલબ્ધ નથી.";
+ addHistory("ગેમ પસંદ કરી: " + name);
+}
+
+function dailyCheckin(){
+ const today = new Date().toISOString().slice(0,10);
+ const user = getCurrent();
+
+ if(!user) return;
+
+ if(user.checkinDate === today){
+  alert("આજનો ડેમો ચેક-ઇન પહેલેથી થઈ ગયો છે.");
+  return;
+ }
+
+ updateUser(u => {
+  u.checkinDate = today;
+  u.history.unshift("Daily Demo Check-in પૂર્ણ — કોઈ રોકડ ઇનામ નથી");
+ });
+ alert("ડેમો ચેક-ઇન પૂર્ણ થયું!");
+}
+
+async function copyReferral(){
+ const code = document.getElementById("refCode").value;
+ try {
+  await navigator.clipboard.writeText(code);
+  alert("Referral Code Copy થઈ ગયો: " + code);
+ } catch(e) {
+  prompt("તમારો Referral Code Copy કરો:",code);
+ }
+}
+
+function logout(){
+ const data = getData();
+ data.session = null;
+ saveData(data);
+ currentUser = null;
+ document.getElementById("appPage").classList.add("hidden");
+ document.getElementById("loginPage").classList.remove("hidden");
+ document.getElementById("loginForm").reset();
+}
+
+(function init(){
+ const data = getData();
+ if(data.session && data.users[data.session]){
+  currentUser = data.session;
+  renderApp();
+ }
+})();
+</script>
+
+</body>
+</html>
