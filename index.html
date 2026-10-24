@@ -4,432 +4,246 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NTB JILI</title>
-
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#10121c;
-  color:white;
-}
-header{
-  background:#191c2b;
-  padding:18px;
-  text-align:center;
-  border-bottom:2px solid #f3bd45;
-}
-header h1{color:#f3bd45;margin:0}
-header p{color:#ccc;margin-bottom:0}
-.container{max-width:900px;margin:auto;padding:16px}
-.box{
-  background:#1c2030;
-  border:1px solid #383e52;
-  padding:18px;
-  border-radius:14px;
-  margin-bottom:16px;
-}
-h2,h3{color:#f3bd45}
-input,select{
-  width:100%;
-  padding:13px;
-  margin:7px 0 12px;
-  border-radius:8px;
-  border:1px solid #555;
-  background:#10121c;
-  color:white;
-}
-button{
-  padding:12px;
-  width:100%;
-  border:0;
-  border-radius:8px;
-  background:#f3bd45;
-  color:#171717;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  margin:5px 0;
-}
-button.secondary{
-  background:#30364a;
-  color:white;
-}
-button.danger{
-  background:#a93232;
-  color:white;
-}
-.hidden{display:none!important}
-.balance{
-  font-size:30px;
-  color:#f3bd45;
-  font-weight:bold;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-}
-.game{
-  background:#292f43;
-  padding:14px 8px;
-  border-radius:10px;
-  text-align:center;
-}
-.small{font-size:13px;color:#bbb;line-height:1.6}
-a{color:#f3bd45}
-.history-item{
-  padding:10px 0;
-  border-bottom:1px solid #383e52;
-  font-size:14px;
-}
-footer{text-align:center;color:#999;padding:20px}
-@media(min-width:600px){
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
+body{margin:0;background:#101326;color:white;font-family:Arial,sans-serif}
+header{background:#191e3b;padding:18px;text-align:center;color:#ffd45c;font-size:27px;font-weight:bold}
+.container{max-width:500px;margin:auto;padding:16px}
+.card{background:#1c2242;border-radius:14px;padding:18px;margin:14px 0}
+h2{text-align:center;color:#ffd45c}
+input{width:100%;padding:13px;margin:7px 0;border:1px solid #41496d;border-radius:8px;background:#101326;color:white;font-size:16px}
+button{width:100%;padding:13px;margin:7px 0;border:0;border-radius:8px;background:#ffd45c;color:#17192b;font-size:16px;font-weight:bold}
+.secondary{background:#394265;color:white}
+.gamegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.game{background:#30385f;color:white;padding:15px 5px;border-radius:10px;text-align:center}
+.hidden{display:none}
+.small{text-align:center;font-size:13px;color:#c5c9df;line-height:1.5}
 </style>
 </head>
-
 <body>
+<header>🎮 NTB JILI</header>
 
-<header>
-  <h1>🎮 NTB JILI</h1>
-  <p>Your Gaming Hub</p>
-</header>
+<div class="container">
 
-<main class="container">
-
-<!-- LOGIN -->
-<section id="loginPage" class="box">
-  <h2>🔐 Login</h2>
-
-  <label>Login Method</label>
-  <select id="loginMethod">
-    <option value="username">Username</option>
-    <option value="mobile">Mobile Number</option>
-  </select>
-
-  <input id="loginId" placeholder="Username અથવા 10 digit mobile"
-         autocomplete="username">
-
-  <input id="loginPassword" type="password"
-         placeholder="Password" autocomplete="current-password">
-
-  <button onclick="login()">Login</button>
-  <button class="secondary" onclick="showRegister()">Create New Account</button>
-
-  <p class="small">
-    આ ડેમો એપ છે. તમારો પાસવર્ડ આ ચેટમાં શેર કરશો નહીં.
-  </p>
+<section id="loginPage" class="card">
+<h2>Login</h2>
+<input id="loginId" placeholder="Username અથવા Mobile Number" autocomplete="username">
+<input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password">
+<button onclick="login()">Login કરો</button>
+<button class="secondary" onclick="showRegister()">Create New Account</button>
+<p class="small">તમારા અગાઉ બનાવેલા આ ડેમો બ્રાઉઝર એકાઉન્ટથી લૉગિન કરો.</p>
 </section>
 
-<!-- REGISTER -->
-<section id="registerPage" class="box hidden">
-  <h2>📝 Create Account</h2>
-
-  <input id="regUsername" placeholder="Username (3–20 characters)">
-  <input id="regMobile" type="tel" maxlength="10"
-         placeholder="10 digit Mobile Number">
-  <input id="regPassword" type="password"
-         placeholder="Create Password">
-
-  <button onclick="register()">Register</button>
-  <button class="secondary" onclick="showLogin()">Back to Login</button>
+<section id="registerPage" class="card hidden">
+<h2>Create New Account</h2>
+<input id="newUsername" placeholder="Username (3 થી 20 અક્ષર)" autocomplete="username">
+<input id="newMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10 અંકનો Mobile Number" autocomplete="tel">
+<input id="newPassword" type="password" placeholder="Password (ઓછામાં ઓછા 4 અક્ષર)" autocomplete="new-password">
+<button onclick="register()">Account બનાવો</button>
+<button class="secondary" onclick="showLogin()">પાછા Login પર જાઓ</button>
 </section>
 
-<!-- HOME -->
 <section id="homePage" class="hidden">
-
-  <div class="box">
-    <h2>👋 Welcome, <span id="welcomeName"></span></h2>
-    <p class="small">Your demo account</p>
-    <p>Demo Wallet Balance</p>
-    <div class="balance" id="balance">₹0</div>
-
-    <button onclick="demoDeposit()">➕ Add Demo Balance</button>
-    <button class="secondary" onclick="demoWithdraw()">Withdraw Demo Request</button>
-    <button class="secondary" onclick="dailyReward()">🎁 Daily Demo Reward</button>
-  </div>
-
-  <div class="box">
-    <h2>💳 Subscription Plans</h2>
-    <p class="small">
-      ઉપલબ્ધ સબ્સ્ક્રિપ્શન પ્લાન જોવા માટે નીચેનું બટન દબાવો.
-      આ બટન પેમેન્ટ કરતું નથી.
-    </p>
-    <button onclick="openSubscription()">View Subscription Plans</button>
-  </div>
-
-  <div class="box">
-    <h2>🎮 Games</h2>
-    <p class="small">
-      નીચે 60 ગેમ્સનાં વિકલ્પો છે. દરેક ગેમનું રમવા યોગ્ય
-      વર્ઝન અલગથી બનાવવું પડશે.
-    </p>
-    <div id="games" class="grid"></div>
-  </div>
-
-  <div class="box">
-    <h2>🎁 Referral</h2>
-    <p>Your demo referral code:</p>
-    <h3 id="referralCode"></h3>
-    <p class="small">આ કોડ હાલમાં ફક્ત ડેમો માટે છે.</p>
-    <button class="secondary" onclick="copyReferral()">Copy Referral Code</button>
-  </div>
-
-  <div class="box">
-    <h2>📜 Activity History</h2>
-    <div id="history"></div>
-  </div>
-
-  <button class="danger" onclick="logout()">Logout</button>
+<div class="card">
+<h2>સ્વાગત છે, <span id="welcomeName"></span>!</h2>
+<p>Demo Balance: ₹<strong id="balance">0</strong></p>
+<button onclick="dailyReward()">Daily Demo Reward</button>
+<button class="secondary" onclick="showSubscription()">Subscription Plans</button>
+<button class="secondary" onclick="logout()">Logout</button>
+<p class="small">આ ડેમો બેલેન્સ માત્ર ટેસ્ટ માટે છે. વાસ્તવિક પૈસા નથી.</p>
+</div>
+<div class="card">
+<h2>🎮 Games</h2>
+<div id="games" class="gamegrid"></div>
+</div>
 </section>
 
-</main>
+<section id="subscriptionPage" class="card hidden">
+<h2>Subscription Plans</h2>
+<div class="card">1 મહિનો — ₹99</div>
+<div class="card">3 મહિના — ₹499</div>
+<div class="card">12 મહિના — ₹999</div>
+<p class="small">આ પ્લાન માત્ર પ્રદર્શન માટે છે. ચુકવણી જોડાયેલી નથી.</p>
+<button class="secondary" onclick="showHome()">પાછા જાઓ</button>
+</section>
 
-<footer>
-  NTB JILI Demo • No real-money payments
-</footer>
+</div>
 
 <script>
-const KEY = "ntb_jili_demo_v1";
-const SESSION = "ntb_jili_demo_session";
+"use strict";
 
-let users = {};
-let currentUser = null;
+const STORAGE_KEY = "ntb_jili_demo_v2";
+const SESSION_KEY = "ntb_jili_demo_session";
 
-try {
-  users = JSON.parse(localStorage.getItem(KEY) || "{}");
-} catch(e) {
-  users = {};
+function getUsers() {
+  try {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return Array.isArray(data) ? data : [];
+  } catch (e) {
+    return [];
+  }
 }
 
-function saveUsers(){
-  localStorage.setItem(KEY, JSON.stringify(users));
+function saveUsers(users) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
 }
 
-function showLogin(){
-  document.getElementById("loginPage").classList.remove("hidden");
-  document.getElementById("registerPage").classList.add("hidden");
-  document.getElementById("homePage").classList.add("hidden");
+function showPage(pageId) {
+  ["loginPage", "registerPage", "homePage", "subscriptionPage"].forEach(id => {
+    document.getElementById(id).classList.add("hidden");
+  });
+  document.getElementById(pageId).classList.remove("hidden");
 }
 
-function showRegister(){
-  document.getElementById("loginPage").classList.add("hidden");
-  document.getElementById("registerPage").classList.remove("hidden");
-  document.getElementById("homePage").classList.add("hidden");
+function showRegister() {
+  showPage("registerPage");
 }
 
-function showHome(){
-  document.getElementById("loginPage").classList.add("hidden");
-  document.getElementById("registerPage").classList.add("hidden");
-  document.getElementById("homePage").classList.remove("hidden");
-  renderHome();
+function showLogin() {
+  showPage("loginPage");
 }
 
-function register(){
-  const username = document.getElementById("regUsername").value.trim();
-  const mobile = document.getElementById("regMobile").value.trim();
-  const password = document.getElementById("regPassword").value;
+function register() {
+  const username = document.getElementById("newUsername").value.trim();
+  const mobile = document.getElementById("newMobile").value.trim();
+  const password = document.getElementById("newPassword").value;
 
-  if(!/^[a-zA-Z0-9_]{3,20}$/.test(username)){
-    alert("Username 3 થી 20 અક્ષરનો હોવો જોઈએ.");
+  if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+    alert("Username 3 થી 20 અક્ષરનો હોવો જોઈએ. અંગ્રેજી અક્ષર, નંબર અને _ વાપરો.");
     return;
   }
 
-  if(!/^[0-9]{10}$/.test(mobile)){
-    alert("10 અંકનો મોબાઇલ નંબર દાખલ કરો.");
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert("કૃપા કરીને સાચો 10 અંકનો મોબાઇલ નંબર લખો.");
     return;
   }
 
-  if(password.length < 4){
+  if (password.length < 4) {
     alert("Password ઓછામાં ઓછા 4 અક્ષરનો હોવો જોઈએ.");
     return;
   }
 
-  if(users[username] || Object.values(users).some(u => u.mobile === mobile)){
-    alert("આ Username અથવા Mobile Number પહેલેથી વપરાય છે.");
+  const users = getUsers();
+  const exists = users.some(user =>
+    user.username.toLowerCase() === username.toLowerCase() ||
+    user.mobile === mobile
+  );
+
+  if (exists) {
+    alert("આ Username અથવા Mobile Number પહેલેથી નોંધાયેલ છે.");
     return;
   }
 
-  users[username] = {
-    username,
-    mobile,
-    password,
-    balance: 0,
-    checkinDate: "",
-    history: ["Account created — demo"],
-    referral: "NTB" + mobile.slice(-4)
-  };
+  users.push({ username, mobile, password, balance: 0, rewarded: false });
+  saveUsers(users);
 
-  saveUsers();
-  alert("Registration successful! હવે Login કરો.");
-  document.getElementById("loginMethod").value = "username";
+  alert("Account સફળતાપૂર્વક બન્યું! હવે Username અને Passwordથી Login કરો.");
   document.getElementById("loginId").value = username;
   document.getElementById("loginPassword").value = "";
   showLogin();
 }
 
-function login(){
-  const method = document.getElementById("loginMethod").value;
-  const id = document.getElementById("loginId").value.trim();
+function login() {
+  const id = document.getElementById("loginId").value.trim().toLowerCase();
   const password = document.getElementById("loginPassword").value;
+  const users = getUsers();
 
-  const user = method === "username"
-    ? users[id]
-    : Object.values(users).find(u => u.mobile === id);
+  const user = users.find(u =>
+    (u.username.toLowerCase() === id || u.mobile === id) &&
+    u.password === password
+  );
 
-  if(!user || user.password !== password){
-    alert("Login details ખોટાં છે અથવા account બનાવ્યું નથી.");
+  if (!user) {
+    alert("Login મળ્યું નથી. Username/Mobile અને Password તપાસો અથવા નવું Account બનાવો.");
     return;
   }
 
-  currentUser = user.username;
-  localStorage.setItem(SESSION, currentUser);
+  localStorage.setItem(SESSION_KEY, user.username);
   showHome();
 }
 
-function getUser(){
-  return currentUser ? users[currentUser] : null;
+function currentUser() {
+  const username = localStorage.getItem(SESSION_KEY);
+  return getUsers().find(u => u.username === username);
 }
 
-function renderHome(){
-  const u = getUser();
-  if(!u) return;
-
-  document.getElementById("welcomeName").textContent = u.username;
-  document.getElementById("balance").textContent =
-    "₹" + Number(u.balance || 0).toLocaleString("en-IN");
-  document.getElementById("referralCode").textContent = u.referral;
-
-  const history = document.getElementById("history");
-  history.innerHTML = "";
-
-  (u.history || []).slice().reverse().forEach(item => {
-    const div = document.createElement("div");
-    div.className = "history-item";
-    div.textContent = item;
-    history.appendChild(div);
-  });
+function showHome() {
+  const user = currentUser();
+  if (!user) {
+    showLogin();
+    return;
+  }
+  document.getElementById("welcomeName").textContent = user.username;
+  document.getElementById("balance").textContent = user.balance;
+  showPage("homePage");
 }
 
-function addHistory(message){
-  const u = getUser();
-  if(!u) return;
-  u.history = u.history || [];
-  u.history.push(new Date().toLocaleString() + " — " + message);
-  saveUsers();
-  renderHome();
-}
+function dailyReward() {
+  const user = currentUser();
+  if (!user) return showLogin();
 
-function demoDeposit(){
-  const amount = Number(prompt("ડેમો માટે રકમ દાખલ કરો (₹1–₹10000):"));
+  const users = getUsers();
+  const index = users.findIndex(u => u.username === user.username);
 
-  if(!Number.isFinite(amount) || amount < 1 ||
-     amount > 10000 || !Number.isInteger(amount)){
-    alert("₹1 થી ₹10000 વચ્ચેની પૂર્ણ સંખ્યા દાખલ કરો.");
+  if (users[index].rewarded) {
+    alert("આ ડેમો રિવોર્ડ તમે પહેલેથી લઈ લીધો છે.");
     return;
   }
 
-  const u = getUser();
-  u.balance = Number(u.balance || 0) + amount;
-  addHistory("Demo balance added: ₹" + amount);
-  alert("ડેમો બેલેન્સ ઉમેરાયું. કોઈ વાસ્તવિક પેમેન્ટ થયું નથી.");
+  users[index].balance += 10;
+  users[index].rewarded = true;
+  saveUsers(users);
+  document.getElementById("balance").textContent = users[index].balance;
+  alert("તમને 10 Demo Points મળ્યા!");
 }
 
-function demoWithdraw(){
-  alert("આ ડેમો છે. વાસ્તવિક પૈસા ઉપાડવાની સુવિધા ઉપલબ્ધ નથી.");
-  addHistory("Demo withdrawal button opened — no money transferred");
+function showSubscription() {
+  showPage("subscriptionPage");
 }
 
-function dailyReward(){
-  const u = getUser();
-  const today = new Date().toDateString();
-
-  if(u.checkinDate === today){
-    alert("આજનો ડેમો રિવોર્ડ પહેલેથી લીધો છે.");
-    return;
-  }
-
-  u.checkinDate = today;
-  u.balance = Number(u.balance || 0) + 10;
-  addHistory("Daily demo reward: 10 points");
-  alert("10 ડેમો પૉઇન્ટ્સ મળ્યા!");
-}
-
-function copyReferral(){
-  const code = getUser().referral;
-
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(code)
-      .then(() => alert("Referral code copied: " + code))
-      .catch(() => prompt("આ કોડ કૉપી કરો:", code));
-  } else {
-    prompt("આ કોડ કૉપી કરો:", code);
-  }
-}
-
-function openSubscription(){
-  window.location.href = "subscription.html";
-}
-
-function logout(){
-  currentUser = null;
-  localStorage.removeItem(SESSION);
-  document.getElementById("loginId").value = "";
-  document.getElementById("loginPassword").value = "";
+function logout() {
+  localStorage.removeItem(SESSION_KEY);
   showLogin();
 }
 
 const gameNames = [
-  "Rummy","Slot 1","Slot 2","Dice","Teen Patti",
-  "Color Game","Lucky Wheel","Mines","Poker","Dragon Tiger",
-  "Ludo","Cricket","Lucky Box","Memory Cards","Number Puzzle",
-  "Match Cards","Fruit Spin","Star Spin","Gold Spin","Ocean Spin",
-  "Space Spin","Jungle Spin","Candy Spin","Diamond Spin","Lucky Dice",
-  "Dice Duel","Dice Race","Color Match","Color Wheel","Number Guess",
-  "Card Match","Card Challenge","Rummy Practice","Poker Practice","Ludo Classic",
-  "Ludo Quick","Cricket Challenge","Batting Challenge","Bowling Challenge",
-  "Memory Match","Tile Match","Block Puzzle","Bubble Pop","Gem Match",
-  "Fruit Match","Word Puzzle","Brain Puzzle","Quick Tap","Reaction Test",
-  "Lucky Number","Spin Wheel","Treasure Box","Coin Flip Demo","Target Tap",
-  "Stack Tower","Maze Runner","Space Runner","Jungle Runner","Speed Quiz",
-  "Puzzle Quest"
+  "Lucky Wheel", "Card Match", "Memory Cards", "Number Guess",
+  "Dice Demo", "Puzzle Game", "Color Match", "Quick Tap",
+  "Fruit Match", "Bubble Pop", "Tile Match", "Mini Chess",
+  "Checkers", "Word Puzzle", "2048 Puzzle", "Tic Tac Toe",
+  "Snake Game", "Space Runner", "Block Puzzle", "Maze Runner",
+  "Coin Catch", "Target Tap", "Pattern Match", "Simon Game",
+  "Sudoku", "Domino Demo", "Ludo Demo", "Carrom Demo",
+  "Basketball Tap", "Football Quiz", "Cricket Quiz", "Racing Demo",
+  "Jump Runner", "Flying Bird", "Brick Breaker", "Paddle Ball",
+  "Word Search", "Jigsaw Puzzle", "Color Sort", "Water Sort",
+  "Number Puzzle", "Math Challenge", "Typing Test", "Reaction Test",
+  "Spot Difference", "Find Pair", "Connect Dots", "Line Puzzle",
+  "Stack Tower", "Helix Demo", "Fruit Catch", "Fish Puzzle",
+  "Animal Quiz", "Geography Quiz", "Music Quiz", "Science Quiz",
+  "Trivia Game", "Word Chain", "Shape Match", "Daily Challenge"
 ];
 
-function renderGames(){
-  const container = document.getElementById("games");
-
-  gameNames.forEach((name, index) => {
-    const card = document.createElement("div");
-    card.className = "game";
-
-    const title = document.createElement("div");
-    title.textContent = (index + 1) + ". " + name;
-
-    const btn = document.createElement("button");
-    btn.className = "secondary";
-    btn.textContent = "Open";
-    btn.onclick = () => {
-      alert(name + " — આ ગેમનું રમવા યોગ્ય વર્ઝન હજી બનાવવાનું બાકી છે.");
-    };
-
-    card.appendChild(title);
-    card.appendChild(btn);
-    container.appendChild(card);
+const gamesContainer = document.getElementById("games");
+gameNames.forEach(name => {
+  const button = document.createElement("button");
+  button.className = "game";
+  button.textContent = name;
+  button.type = "button";
+  button.addEventListener("click", () => {
+    alert(name + " હજી Demo Menuમાં છે. આ બટન માટે ગેમ બનાવવાની બાકી છે.");
   });
-}
+  gamesContainer.appendChild(button);
+});
 
-renderGames();
-
-const savedSession = localStorage.getItem(SESSION);
-if(savedSession && users[savedSession]){
-  currentUser = savedSession;
-  showHome();
-} else {
-  showLogin();
-}
+(function init() {
+  const username = localStorage.getItem(SESSION_KEY);
+  if (username && getUsers().some(u => u.username === username)) {
+    showHome();
+  } else {
+    showLogin();
+  }
+})();
 </script>
-
 </body>
 </html>
